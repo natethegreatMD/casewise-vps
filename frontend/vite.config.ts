@@ -8,9 +8,20 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 5173,
     strictPort: true,
-    allowedHosts: ['casewisemd.org', 'www.casewisemd.org', 'app.casewisemd.org'],
     watch: {
       usePolling: true
+    },
+    allowedHosts: [
+      'casewisemd.org',
+      'www.casewisemd.org',
+      'app.casewisemd.org',
+      'api.casewisemd.org',
+      'viewer.casewisemd.org',
+      'dicom.casewisemd.org'
+    ],
+    hmr: {
+      protocol: 'wss',
+      host: 'app.casewisemd.org'
     }
   }
 })

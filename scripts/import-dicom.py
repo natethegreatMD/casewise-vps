@@ -8,21 +8,26 @@ import time
 import glob
 from pathlib import Path
 
-def wait_for_orthanc(url="http://localhost:8042", max_retries=30):
-    """Wait for Orthanc to be ready"""
-    for i in range(max_retries):
+def wait_for_orthanc(url="https://dicom.casewisemd.org", max_retries=30):
+    """Wait for Orthanc server to be ready."""
+    print(f"Waiting for DICOM server at {url}...")
+    
+    for attempt in range(max_retries):
         try:
-            response = requests.get(f"{url}/system", timeout=5)
+            response = requests.get(f"{url}/health", timeout=5)
             if response.status_code == 200:
-                print("✅ Orthanc is ready!")
+                print(f"✅ DICOM server is ready at {url}")
                 return True
         except requests.exceptions.RequestException:
             pass
-        print(f"⏳ Waiting for Orthanc... ({i+1}/{max_retries})")
+        
+        print(f"Attempt {attempt + 1}/{max_retries} - DICOM server not ready yet...")
         time.sleep(2)
+    
+    print(f"❌ DICOM server at {url} is not responding after {max_retries} attempts")
     return False
 
-def import_dicom_files(orthanc_url="http://localhost:8042", dicom_dir="./demo_cases"):
+def import_dicom_files(orthanc_url="https://dicom.casewisemd.org", dicom_dir="./demo_cases"):
     """Import DICOM files into Orthanc"""
     if not wait_for_orthanc(orthanc_url):
         print("❌ Orthanc is not responding")

@@ -1,5 +1,9 @@
 import requests
 import json
+import os
+
+# Configuration
+API_BASE_URL = os.getenv('API_BASE_URL', 'https://api.casewisemd.org')
 
 # Test data for grading submission
 test_data = {
@@ -12,7 +16,7 @@ test_data = {
 
 # Make POST request to grading endpoint
 response = requests.post(
-    "http://localhost:8000/api/v1/grading/submit",
+    f"{API_BASE_URL}/api/v1/grading/submit",
     json=test_data,
     headers={"Content-Type": "application/json"}
 )

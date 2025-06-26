@@ -89,12 +89,15 @@ function DiagnosticWorkflow({ onBackToHome }: DiagnosticWorkflowProps) {
   const [showHint, setShowHint] = useState(false);
   const [showDicomViewer, setShowDicomViewer] = useState(true);
 
+  // API Base URL from environment variables
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://api.casewisemd.org';
+
   // Start diagnostic session
   const startDiagnosticSession = async () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch('http://localhost:8001/api/v1/demo/diagnostic-session');
+      const res = await fetch(`${API_BASE_URL}/api/v1/demo/diagnostic-session`);
       if (!res.ok) throw new Error('Failed to start diagnostic session');
       const data = await res.json();
       setSession(data);
@@ -113,7 +116,7 @@ function DiagnosticWorkflow({ onBackToHome }: DiagnosticWorkflowProps) {
     setError(null);
     
     try {
-      const res = await fetch('http://localhost:8001/api/v1/demo/diagnostic-answer', {
+      const res = await fetch(`${API_BASE_URL}/api/v1/demo/diagnostic-answer`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

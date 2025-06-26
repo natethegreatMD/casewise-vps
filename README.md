@@ -31,10 +31,18 @@ docker-compose -f dcd.yml up
 ```
 
 This starts the 4 core development services:
-- **Backend API**: http://localhost:8001
-- **DICOM Server**: http://localhost:8042  
-- **OHIF Viewer**: http://localhost:8081
-- **Frontend**: http://localhost:5173
+
+**Development URLs:**
+* **Backend API**: http://localhost:8001
+* **DICOM Server**: http://localhost:8042
+* **OHIF Viewer**: http://localhost:8081
+* **Frontend**: http://localhost:5173
+
+**Production URLs:**
+* **Backend API**: https://api.casewisemd.org
+* **DICOM Server**: https://dicom.casewisemd.org
+* **OHIF Viewer**: https://viewer.casewisemd.org
+* **Frontend**: https://app.casewisemd.org
 
 ### **Other Development Commands**
 ```bash
@@ -75,10 +83,17 @@ Includes additional services for production deployment:
    ```
 
 2. **Access Services**:
-   - Frontend: http://localhost:5173
-   - Backend API: http://localhost:8001/docs
-   - OHIF Viewer: http://localhost:8081
-   - DICOM Server: http://localhost:8042
+   **Development:**
+   * Frontend: http://localhost:5173  
+   * Backend API: http://localhost:8001/docs  
+   * OHIF Viewer: http://localhost:8081  
+   * DICOM Server: http://localhost:8042
+   
+   **Production:**
+   * Frontend: https://app.casewisemd.org  
+   * Backend API: https://api.casewisemd.org/docs  
+   * OHIF Viewer: https://viewer.casewisemd.org  
+   * DICOM Server: https://dicom.casewisemd.org
 
 3. **Make Changes**:
    - Frontend and backend have hot reload enabled

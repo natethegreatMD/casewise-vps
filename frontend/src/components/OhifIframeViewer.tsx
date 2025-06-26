@@ -9,10 +9,14 @@ const OhifIframeViewer: React.FC<OhifIframeViewerProps> = ({ caseId = 'case001',
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  // Get URLs from environment variables with fallbacks
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://api.casewisemd.org';
+  const VIEWER_BASE_URL = import.meta.env.VITE_VIEWER_BASE_URL || 'https://viewer.casewisemd.org';
+
   // Build a list of DICOM file URLs for OHIF
   // Based on the case metadata, we know we have axial, delayed, and scout series
   const buildDicomUrls = () => {
-    const baseUrl = `http://localhost:8001/dicom/${caseId}`;
+    const baseUrl = `${API_BASE_URL}/dicom/${caseId}`;
     
     // These are the series UIDs from the metadata
     const series = {
@@ -55,7 +59,7 @@ const OhifIframeViewer: React.FC<OhifIframeViewerProps> = ({ caseId = 'case001',
     showStudyList: 'false'
   });
   
-  const ohifUrl = `http://localhost:8081/?${urlParams.toString()}`;
+  const ohifUrl = `${VIEWER_BASE_URL}/?${urlParams.toString()}`;
 
   const handleIframeLoad = () => {
     setLoading(false);

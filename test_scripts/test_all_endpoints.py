@@ -1,5 +1,9 @@
 import requests
 import json
+import os
+
+# Configuration
+base_url = os.getenv('API_BASE_URL', 'https://api.casewisemd.org')
 
 def test_endpoint(method, url, data=None, description=""):
     """Test an API endpoint and print results."""
@@ -23,8 +27,6 @@ def test_endpoint(method, url, data=None, description=""):
 
 # Test all endpoints
 if __name__ == "__main__":
-    base_url = "http://localhost:8000"
-    
     # Health check
     test_endpoint("GET", f"{base_url}/health", description="Health Check")
     
