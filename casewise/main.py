@@ -80,11 +80,7 @@ app.add_middleware(
         "https://casewisemd.org",
         "https://viewer.casewisemd.org",
         # Keep localhost for development
-        "http://localhost:3000", 
-        "http://localhost:5173", 
-        "http://localhost:5174", 
-        "http://localhost:8001", 
-        "http://localhost:8081"
+     
     ],
     allow_credentials=True,
     allow_methods=["*"],

@@ -22,10 +22,7 @@ CORS(app, origins=[
     'https://casewisemd.org',
     'https://www.casewisemd.org',
     # Keep localhost for development
-    'http://localhost:3000',
-    'http://localhost:5173',
-    'http://localhost:8001',
-    'http://localhost:8081'
+   
 ])
 
 # Configuration
