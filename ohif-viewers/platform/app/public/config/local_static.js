@@ -20,8 +20,8 @@ window.config = {
       configuration: {
         friendlyName: 'Static WADO Local Data',
         name: 'DCM4CHEE',
-        qidoRoot: 'http://localhost:3001/dicomweb',
-        wadoRoot: 'http://localhost:3001/dicomweb',
+        qidoRoot: 'https://dicom.casewisemd.org/dicom-web',
+        wadoRoot: 'https://dicom.casewisemd.org/dicom-web',
         qidoSupportsIncludeField: false,
         supportsReject: true,
         supportsStow: true,
@@ -44,8 +44,8 @@ window.config = {
       configuration: {
         friendlyName: 'Static WADO Docker Data',
         name: 'DCM4CHEE',
-        qidoRoot: 'http://localhost:25080/dicomweb',
-        wadoRoot: 'http://localhost:25080/dicomweb',
+        qidoRoot: 'https://dicom.casewisemd.org/dicom-web',
+        wadoRoot: 'https://dicom.casewisemd.org/dicom-web',
         qidoSupportsIncludeField: false,
         supportsReject: true,
         supportsStow: true,

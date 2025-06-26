@@ -146,7 +146,7 @@ export default defineConfig({
     // Configure proxy
     proxy: {
       '/dicomweb': {
-        target: 'http://localhost:5000',
+        target: 'https://dicom.casewisemd.org',
       },
       // Add conditional proxy based on env vars
       ...(PROXY_TARGET && PROXY_DOMAIN

@@ -132,8 +132,8 @@ window.config = {
       configuration: {
         friendlyName: 'Static WADO Local Data',
         name: 'DCM4CHEE',
-        qidoRoot: 'http://localhost:5000/dicomweb',
-        wadoRoot: 'http://localhost:5000/dicomweb',
+        qidoRoot: 'https://dicom.casewisemd.org/dicom-web',
+        wadoRoot: 'https://dicom.casewisemd.org/dicom-web',
         qidoSupportsIncludeField: false,
         supportsReject: true,
         supportsStow: true,

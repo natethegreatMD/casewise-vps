@@ -1,0 +1,35 @@
+# ⚠️ FOLLOW-UP PATCH: Remove remaining localhost + dev port configs
+
+# CONTEXT:
+# - NGINX + HTTPS + Credo are live and routing all traffic via DNS
+# - All services use subdomains:
+#   - https://dicom.casewisemd.org (DICOMweb)
+#   - https://api.casewisemd.org (backend)
+#   - https://viewer.casewisemd.org (OHIF)
+#   - https://app.casewisemd.org (frontend)
+
+# 🚫 The following files still contain hardcoded localhost and port references:
+# - rsbuild.config.ts → http://localhost:5000
+# - playwright.config.ts → http://localhost:3335
+# - cypress.config.ts → http://localhost:3000
+# - local_orthanc.js, local_dcm4chee.js, local_static.js → full localhost endpoints
+# - customization.js, kheops.js, e2e.js, netlify.js → all use port-bound dev servers
+# - webpack.pwa.js → proxy + public set to localhost:3000 and 5000
+# - default_16bit.js → still mentions :3000
+# - default.js → contains legacy commented-out BulkDataURI using localhost
+
+# ✅ ACTIONS:
+# 1. Replace all `http://localhost:*` and `http://127.0.0.1:*` with correct DNS-based production URLs
+#    - qidoRoot, wadoRoot → https://dicom.casewisemd.org/dicom-web
+#    - wadoUriRoot → https://dicom.casewisemd.org/wado
+#    - viewer base URLs → https://viewer.casewisemd.org
+
+# 2. COMMENT OUT or DELETE:
+#    - Any remaining localhost-based `BulkDataURI`, dev URLs, or fallback logic
+#    - Proxy rewrites or fallback code assuming local dev (e.g. webpack config)
+
+# 3. DO NOT touch anything already patched (default.js, docker-compose.yml, simple-dicom-server.py)
+
+# 📦 Final goal:
+# No file in the codebase — config or otherwise — should reference localhost or a port number.
+# All routing must be DNS-based and HTTPS-only.

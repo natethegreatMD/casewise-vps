@@ -161,9 +161,9 @@ module.exports = (env, argv) => {
         overlay: { errors: true, warnings: false },
       },
       proxy: {
-        '/dicomweb': 'http://localhost:5000',
+        '/dicomweb': 'https://dicom.casewisemd.org',
         '/dicom-microscopy-viewer': {
-          target: 'http://localhost:3000',
+          target: 'https://viewer.casewisemd.org',
           pathRewrite: {
             '^/dicom-microscopy-viewer': `/${PUBLIC_URL}/dicom-microscopy-viewer`,
           },

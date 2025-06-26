@@ -12,7 +12,7 @@ export default defineConfig({
   globalTimeout: 800_000,
   timeout: 800_000,
   use: {
-    baseURL: 'http://localhost:3335',
+    baseURL: 'https://viewer.casewisemd.org',
     trace: 'on-first-retry',
     video: 'on',
     testIdAttribute: 'data-cy',
@@ -39,7 +39,7 @@ export default defineConfig({
   ],
   webServer: {
     command: 'cross-env APP_CONFIG=config/e2e.js COVERAGE=true OHIF_PORT=3335 nyc yarn start',
-    url: 'http://localhost:3335',
+    url: 'https://viewer.casewisemd.org',
     reuseExistingServer: !process.env.CI,
     timeout: 360_000,
   },

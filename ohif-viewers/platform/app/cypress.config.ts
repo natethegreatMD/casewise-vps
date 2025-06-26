@@ -18,7 +18,7 @@ export default defineConfig({
         return launchOptions;
       });
     },
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://viewer.casewisemd.org',
     waitForAnimations: true,
     chromeWebSecurity: false,
     defaultCommandTimeout: 30000,
