@@ -1,0 +1,79 @@
+# Core FastAPI and web framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+
+# AI and OpenAI integration
+openai==1.3.7
+python-dotenv==1.0.0
+
+# Data validation and serialization
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# Logging and monitoring
+structlog==23.2.0
+
+# File operations and utilities
+pyyaml==6.0.1
+python-dateutil==2.8.2
+
+# DICOM and medical imaging
+pydicom==2.4.3
+numpy==1.24.3
+
+# Simple DICOMweb server
+flask==3.0.0
+flask-cors==4.0.0
+
+# HTTP client for testing and API calls
+requests==2.31.0
+
+# CLI support (referenced in pyproject.toml)
+click==8.1.7
+
+# Additional standard library support
+# (re module is built-in, but ensuring compatibility)
+
+# Production server options (uncomment as needed)
+# gunicorn==21.2.0  # Alternative WSGI server
+# hypercorn==0.14.4  # Alternative ASGI server
+
+# Security and authentication (add if needed)
+# python-jose[cryptography]==3.3.0  # JWT handling
+# passlib[bcrypt]==1.7.4  # Password hashing
+# python-multipart==0.0.6  # Already included above
+
+# Database support (uncomment as needed)
+# sqlalchemy==2.0.23  # ORM
+# alembic==1.12.1  # Database migrations
+# psycopg2-binary==2.9.9  # PostgreSQL adapter
+# pymongo==4.6.0  # MongoDB driver
+
+# Caching (uncomment as needed)
+# redis==5.0.1  # Redis client
+# python-memcached==1.59  # Memcached client
+
+# Monitoring and observability (uncomment as needed)
+# prometheus-client==0.19.0  # Prometheus metrics
+# sentry-sdk[fastapi]==1.38.0  # Error tracking
+
+# Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+httpx==0.25.2
+
+# Development and linting
+black==23.11.0
+isort==5.12.0
+flake8==6.1.0
+mypy==1.7.1
+
+# Additional development tools (uncomment as needed)
+# pre-commit==3.6.0  # Git hooks
+# bandit==1.7.5  # Security linting
+# safety==2.3.5  # Dependency vulnerability scanning
+
+# Documentation (uncomment as needed)
+# mkdocs==1.5.3  # Documentation generator
+# mkdocs-material==9.4.8  # Material theme for MkDocs 

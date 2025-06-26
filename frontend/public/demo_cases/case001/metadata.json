@@ -1,0 +1,32 @@
+{
+  "caseId": "case001",
+  "caseTitle": "Ovarian Cancer Case",
+  "patientId": "TCGA-09-0364",
+  "modality": "CT",
+  "bodyRegion": "Pelvis",
+  "seriesDescription": "Pelvis CT with Contrast",
+  "sliceCount": 50,
+  "sliceThickness": 5.0,
+  "pixelSpacing": [0.976562, 0.976562],
+  "windowCenter": 40,
+  "windowWidth": 400,
+  "studyDate": "2024-01-15",
+  "institution": "Demo Medical Center",
+  "manufacturer": "Demo Scanner",
+  "sliceOrder": "ascending",
+  "hasContrast": true,
+  "contrastType": "Iodinated",
+  "clinicalHistory": "55-year-old female with abdominal pain and pelvic mass",
+  "findings": "Large complex pelvic mass with solid and cystic components",
+  "differentialDiagnosis": [
+    "Ovarian cancer",
+    "Benign ovarian cyst",
+    "Endometriosis",
+    "Uterine fibroids"
+  ],
+  "keySlices": {
+    "start": 10,
+    "end": 35,
+    "keyFindings": [15, 20, 25, 30]
+  }
+} 

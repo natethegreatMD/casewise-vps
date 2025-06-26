@@ -1,0 +1,11 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+- always spin down docker before editing files then spin docker up again to test
+- console output from front end is saved to C:\Users\Mike\Documents\casewise-v2\frontend console output.bat after every run by user for debugging
+
+
+
+- while we're still developing and debugging, only spin up: casewise-dev, dicom-server, ohif-viewer, and frontend

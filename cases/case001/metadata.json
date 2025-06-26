@@ -1,0 +1,13 @@
+{
+  "id": "case001",
+  "title": "Chest X-Ray - Pneumonia Case",
+  "description": "A 65-year-old patient presenting with fever, cough, and shortness of breath. The chest X-ray shows findings consistent with community-acquired pneumonia.",
+  "modality": "X-Ray",
+  "bodyPart": "Chest",
+  "difficulty": "intermediate",
+  "rubricId": "chest_xray_v1",
+  "promptVersion": "v1",
+  "images": ["chest_pa.jpg", "chest_lateral.jpg"],
+  "createdAt": "2024-01-01T00:00:00.000Z",
+  "updatedAt": "2024-01-01T00:00:00.000Z"
+} 
