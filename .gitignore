@@ -162,4 +162,7 @@ tmp/
 
 # OHIF node_modules
 ohif-viewers/node_modules/
+**/node_modules/
+**/.cache/
+node_modules/
 
