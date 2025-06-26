@@ -1,0 +1,135 @@
+version: '3.8'
+
+services:
+  # Production-ready service
+  casewise:
+    build: .
+    container_name: casewise
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - MODEL_NAME=${MODEL_NAME:-gpt-4o}
+      - CASES_DIR=${CASES_DIR:-cases}
+      - RUBRICS_DIR=${RUBRICS_DIR:-rubrics}
+      - DEBUG=${DEBUG:-false}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    volumes:
+      - ./logs:/app/logs
+      - ./output:/app/output
+      - ./rubrics:/app/rubrics
+      - ./cases:/app/cases
+      - ./demo_cases:/app/demo_cases
+      - ./source-documents:/app/source-documents
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Development service with hot reload
+  casewise-dev:
+    build: .
+    container_name: casewise-dev
+    ports:
+      - "8001:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - MODEL_NAME=${MODEL_NAME:-gpt-4o}
+      - CASES_DIR=${CASES_DIR:-cases}
+      - RUBRICS_DIR=${RUBRICS_DIR:-rubrics}
+      - DEBUG=${DEBUG:-true}
+      - LOG_LEVEL=${LOG_LEVEL:-DEBUG}
+    volumes:
+      - ./logs:/app/logs
+      - ./output:/app/output
+      - ./rubrics:/app/rubrics
+      - ./cases:/app/cases
+      - ./demo_cases:/app/demo_cases
+      - ./source-documents:/app/source-documents
+      - ./casewise:/app/casewise  # Mount source code for hot reload
+    restart: unless-stopped
+    command: ["uvicorn", "casewise.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Demo service for OTT/VC reviewers (minimal setup)
+  casewise-demo:
+    build: .
+    container_name: casewise-demo
+    ports:
+      - "8002:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-demo-key}
+      - MODEL_NAME=${MODEL_NAME:-gpt-4o}
+      - CASES_DIR=${CASES_DIR:-cases}
+      - RUBRICS_DIR=${RUBRICS_DIR:-rubrics}
+      - DEBUG=${DEBUG:-false}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    volumes:
+      - ./demo_cases:/app/demo_cases
+      - ./rubrics:/app/rubrics
+      - ./cases:/app/cases
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Simple DICOMweb Server (Python-based, no external images)
+  dicom-server:
+    build: .
+    container_name: dicom-server
+    ports:
+      - "8042:8042"
+    volumes:
+      - ./demo_cases:/app/demo_cases
+      - ./simple-dicom-server.py:/app/simple-dicom-server.py
+    environment:
+      - PYTHONPATH=/app
+    command: ["python", "simple-dicom-server.py"]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8042/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Frontend Development Server
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - casewise-dev
+      - dicom-server
+    restart: unless-stopped
+
+  # OHIF Viewer Server
+  ohif-viewer:
+    image: nginx:alpine
+    container_name: ohif-viewer
+    ports:
+      - "8081:80"
+    volumes:
+      - ./ohif-viewers/platform/app/dist:/usr/share/nginx/html:ro
+    depends_on:
+      - dicom-server
+    restart: unless-stopped 
