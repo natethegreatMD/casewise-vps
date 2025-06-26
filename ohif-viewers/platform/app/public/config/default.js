@@ -217,8 +217,8 @@ window.config = {
       configuration: {
         friendlyName: 'Static WADO Local Data',
         name: 'DCM4CHEE',
-        qidoRoot: 'http://localhost:5000/dicomweb',
-        wadoRoot: 'http://localhost:5000/dicomweb',
+        qidoRoot: 'http://143.244.154.89:8042/dicom-web',
+        wadoRoot: 'http://143.244.154.89:8042/dicom-web',
         qidoSupportsIncludeField: false,
         supportsReject: true,
         supportsStow: true,
@@ -241,9 +241,9 @@ window.config = {
       configuration: {
         friendlyName: 'local Orthanc DICOMWeb Server',
         name: 'DCM4CHEE',
-        wadoUriRoot: 'http://localhost/pacs/dicom-web',
-        qidoRoot: 'http://localhost/pacs/dicom-web',
-        wadoRoot: 'http://localhost/pacs/dicom-web',
+        wadoUriRoot: 'http://143.244.154.89:8042/wado',
+        qidoRoot: 'http://143.244.154.89:8042/dicom-web',
+        wadoRoot: 'http://143.244.154.89:8042/dicom-web',
         qidoSupportsIncludeField: true,
         supportsReject: true,
         dicomUploadEnabled: true,
