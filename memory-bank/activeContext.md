@@ -120,7 +120,7 @@ click==8.1.7
 - **Backend**: 100% functional FastAPI server (localhost:8001) ✅
 - **Frontend**: 100% functional React app (localhost:5173) ✅
 - **OHIF Viewer**: Built and served on localhost:8081 ✅
-- **DICOM Server**: Python-based server on localhost:8042 ✅
+- **DICOM Server**: Python-based server on dicom.casewisemd.org ✅
 - **Branch**: `main` (updated with v2.54) ✅
 - **VPS Ready**: Requirements and deployment files prepared ✅
 - **Status**: Ready for VPS deployment

@@ -63,7 +63,7 @@ function App() {
 ```typescript
 const handleSubmit = async (e: React.FormEvent) => {
   try {
-    const res = await fetch('http://localhost:8000/api/v1/demo/result');
+    const res = await fetch('https://api.casewisemd.org/api/v1/demo/result');
     if (!res.ok) throw new Error('Failed to fetch');
     const data = await res.json();
     setGradingResult(data);
@@ -117,7 +117,7 @@ def dict(self) -> dict:
 ```python
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:5173"],
+    allow_origins=["https://app.casewisemd.org", "https://viewer.casewisemd.org"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -205,7 +205,7 @@ Submit → Session ID → Poll Status → Retrieve Results
 **Pattern**: RESTful API with JSON
 ```typescript
 // Frontend API call
-const response = await fetch('http://localhost:8000/api/v1/demo/result');
+const response = await fetch('https://api.casewisemd.org/api/v1/demo/result');
 const data = await response.json();
 ```
 
@@ -261,7 +261,7 @@ class Settings(BaseSettings):
 ### 2. Frontend Environment Configuration
 ```typescript
 // API base URL configuration
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = 'https://api.casewisemd.org';
 const DEMO_ENDPOINT = `${API_BASE_URL}/api/v1/demo/result`;
 ```
 

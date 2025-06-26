@@ -18,9 +18,9 @@ window.config = {
       configuration: {
         friendlyName: 'dcmjs DICOMWeb Server',
         name: 'DCM4CHEE',
-        wadoUriRoot: 'http://localhost:5985',
-        qidoRoot: 'http://localhost:5985',
-        wadoRoot: 'http://localhost:5985',
+        wadoUriRoot: 'https://dicom.casewisemd.org/wado',
+        qidoRoot: 'https://dicom.casewisemd.org/dicom-web',
+        wadoRoot: 'https://dicom.casewisemd.org/dicom-web',
         qidoSupportsIncludeField: true,
         supportsReject: true,
         imageRendering: 'wadouri',

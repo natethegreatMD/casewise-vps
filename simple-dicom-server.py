@@ -492,7 +492,7 @@ def health_check():
     })
 
 if __name__ == '__main__':
-    print(f"🚀 Starting Simple DICOMweb Server on port {PORT}")
+    print(f"🚀 Starting Simple DICOMweb Server")
     print(f"📁 Serving DICOM files from: {DEMO_CASES_DIR}")
     
     # Check if demo_cases directory exists
@@ -509,4 +509,4 @@ if __name__ == '__main__':
         print("⚠️  Warning: No DICOM files found!")
         print(f"Please add .dcm files to the {DEMO_CASES_DIR} directory.")
     
-    app.run(host='0.0.0.0', port=PORT, debug=True) 
+    app.run(host='0.0.0.0', port=PORT, debug=False) 
