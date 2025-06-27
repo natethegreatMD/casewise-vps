@@ -7,7 +7,11 @@ COPY package*.json ./
 
 # Install dependencies
 ENV NODE_ENV=development
-RUN npm install --legacy-peer-deps && npx patch-package
+
+# Explicitly install patch-package globally to avoid missing binary errors
+RUN npm install -g patch-package && \
+    npm install --legacy-peer-deps && \
+    patch-package
 
 # Copy source code
 COPY . .
