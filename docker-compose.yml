@@ -71,12 +71,12 @@ services:
 
   # OHIF Viewer Server
   ohif-viewer:
-    image: nginx:alpine
+    build:
+      context: ./ohif-viewers/platform/app
+      dockerfile: Dockerfile
     container_name: ohif-viewer
     ports:
-      - "8081:80"
-    volumes:
-      - ./ohif-viewers/platform/app/dist:/usr/share/nginx/html:ro
+      - "127.0.0.1:8081:80"
     depends_on:
       - dicom-server
     restart: unless-stopped 
