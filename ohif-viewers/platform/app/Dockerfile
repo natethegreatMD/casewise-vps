@@ -6,7 +6,8 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install --legacy-peer-deps
+ENV NODE_ENV=development
+RUN npm install --legacy-peer-deps && npx patch-package
 
 # Copy source code
 COPY . .
